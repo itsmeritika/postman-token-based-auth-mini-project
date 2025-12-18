@@ -1,0 +1,299 @@
+{
+  "info": {
+    "_postman_id": "53a5337d-f78e-4b66-913c-24bfc1021b45",
+    "name": "mycollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "token based authorization",
+      "item": [
+        {
+          "name": "login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6fbf80c2-3fda-4836-b4bc-89cfd71d5a70",
+                "exec": [
+                  "// Extract token from response and store in environment variable",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Token extracted and stored in environment\", function () {",
+                  "    pm.expect(jsonData).to.have.property(\"token\");",
+                  "    pm.environment.set(\"authToken\", jsonData.token);",
+                  "    console.log(\"Auth token stored: \" + jsonData.token);",
+                  "    console.log(\"response token:\", jsonData.token )",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "9ebd99a4-5eec-4dfc-b08f-f97b7eeaf07a",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "reqres-free-v1",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/api/login",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "275b5f32-3437-4130-87d4-2b5ddfa2830c",
+              "name": "login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "x-api-key",
+                    "value": "reqres-free-v1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://reqres.in/api/login",
+                  "protocol": "https",
+                  "host": [
+                    "reqres",
+                    "in"
+                  ],
+                  "path": [
+                    "api",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Thu, 18 Dec 2025 11:53:14 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "GET, POST, PUT, DELETE, OPTIONS"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"1d-lGCrvD6B7Qzk11+2C98+nGhhuec\""
+                },
+                {
+                  "key": "Nel",
+                  "value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "Report-To",
+                  "value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=9MJERYXHqyQQKrcTQ%2FXEzRi8G96nqcw5XbfzKBbHrBE%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1766058794\"}],\"max_age\":3600}"
+                },
+                {
+                  "key": "Reporting-Endpoints",
+                  "value": "heroku-nel=\"https://nel.heroku.com/reports?s=9MJERYXHqyQQKrcTQ%2FXEzRi8G96nqcw5XbfzKBbHrBE%3D&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&ts=1766058794\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 heroku-router"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "ReqRes.in - Deploy backends in 30 seconds"
+                },
+                {
+                  "key": "X-Reqres-Docs",
+                  "value": "https://reqres.in"
+                },
+                {
+                  "key": "X-Reqres-Message",
+                  "value": "This API is powered by ReqRes. Deploy your own backend in 30 seconds!"
+                },
+                {
+                  "key": "X-Reqres-Templates",
+                  "value": "https://app.reqres.in/templates"
+                },
+                {
+                  "key": "X-Reqres-Upgrade",
+                  "value": "https://app.reqres.in/upgrade"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "33f63ddf-89df-1298-6055-d1bc77b4b56a"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "9afe7564efdf2dce-KTM"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "2025-12-18T11:54:40.958Z",
+              "body": "{\n    \"token\": \"QpwL5tke4Pnpja7X4\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "get user",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "be68c24d-93d8-4506-b76a-6c73f44de704",
+                "exec": [
+                  "pm.environment.set(\"variable_key\", \"variable_value\");",
+                  "",
+                  "// Generate current timestamp and store in environment variable",
+                  "const timestamp = Math.floor(Date.now()/1000);",
+                  "pm.environment.set(\"timestamp\", timestamp);",
+                  "console.log(\"Timestamp stored: \" + timestamp);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "6c2ca615-7d49-469a-92d2-38b4e0fa950e",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "e9fde7fd-3885-46c4-a22f-5c920bdf575b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}"
+            },
+            "url": {
+              "raw": "https://reqres.in/api/users/2",
+              "protocol": "https",
+              "host": [
+                "reqres",
+                "in"
+              ],
+              "path": [
+                "api",
+                "users",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "dca3f9ba-e143-4d76-a5a5-bca5d1551e98"
+    }
+  ]
+}
